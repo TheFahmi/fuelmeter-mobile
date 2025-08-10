@@ -1,0 +1,19 @@
+name: Update Fuel Prices (daily)
+
+on:
+  schedule:
+    - cron: "0 20 * * *" # 03:00 WIB (UTC+7)
+  workflow_dispatch:
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Call Supabase Edge Function
+        run: |
+          curl -sS -X POST \
+            -H "Authorization: Bearer ${{ secrets.SUPABASE_ANON_KEY }}" \
+            -H "apikey: ${{ secrets.SUPABASE_ANON_KEY }}" \
+            -H "Content-Type: application/json" \
+            -d '{}' \
+            "https://${{ secrets.SUPABASE_PROJECT_REF }}.functions.supabase.co/update_fuel_prices"
