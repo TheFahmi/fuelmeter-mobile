@@ -340,8 +340,8 @@ class _AddRecordPageState extends State<AddRecordPage> {
             Glass(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  TextFormField(
+          children: [
+            TextFormField(
                     controller: dateDisplayController,
                     readOnly: true,
                     decoration: InputDecoration(
@@ -370,8 +370,8 @@ class _AddRecordPageState extends State<AddRecordPage> {
                       _applyAutoPrice();
                     },
                     decoration: const InputDecoration(labelText: 'SPBU'),
-                  ),
-                  const SizedBox(height: 12),
+            ),
+            const SizedBox(height: 12),
                   DropdownButtonFormField<String>(
                     value: _selectedFuelType,
                     items: _fuelOptions
@@ -403,17 +403,17 @@ class _AddRecordPageState extends State<AddRecordPage> {
             Glass(
               child: Column(
                 children: [
-                  TextFormField(
+            TextFormField(
                     controller: priceController,
                     readOnly: false,
                     decoration:
                         const InputDecoration(labelText: 'Harga/Liter (Rp)'),
                     keyboardType:
                         const TextInputType.numberWithOptions(decimal: true),
-                  ),
-                  const SizedBox(height: 12),
-                  TextFormField(
-                    controller: quantityController,
+            ),
+            const SizedBox(height: 12),
+            TextFormField(
+              controller: quantityController,
                     readOnly: _autoPriceFromReceipt,
                     decoration: InputDecoration(
                         labelText: _autoPriceFromReceipt
@@ -421,9 +421,9 @@ class _AddRecordPageState extends State<AddRecordPage> {
                             : 'Jumlah (L)'),
                     keyboardType:
                         const TextInputType.numberWithOptions(decimal: true),
-                  ),
-                  const SizedBox(height: 12),
-                  TextFormField(
+            ),
+            const SizedBox(height: 12),
+            TextFormField(
                     controller: totalController,
                     readOnly: !_autoPriceFromReceipt,
                     decoration: InputDecoration(

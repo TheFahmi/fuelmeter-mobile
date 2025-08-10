@@ -6,6 +6,7 @@ import 'package:http/http.dart' as http;
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:go_router/go_router.dart';
 import '../widgets/skeleton.dart';
 import '../repositories/price_repository.dart';
 
@@ -224,6 +225,13 @@ class _NearbyStationsPageState extends State<NearbyStationsPage> {
           onPressed: () => Navigator.of(context).maybePop(),
           tooltip: 'Kembali',
         ),
+        actions: [
+          IconButton(
+            tooltip: 'Updated Prices',
+            onPressed: () => context.go('/updated-prices'),
+            icon: const Icon(Icons.price_change_outlined),
+          ),
+        ],
       ),
       body: loading
           ? ListView(

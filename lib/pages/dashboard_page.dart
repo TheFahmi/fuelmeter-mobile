@@ -10,7 +10,16 @@ import '../theme/app_theme.dart';
 import '../widgets/skeleton.dart';
 
 // Menu overflow untuk merapikan ikon AppBar
-enum _DashboardMenu { records, premium, profile, nearby, toggleTheme, logout }
+enum _DashboardMenu {
+  records,
+  premium,
+  profile,
+  nearby,
+  fuelPrices,
+  aboutUs,
+  toggleTheme,
+  logout
+}
 
 class DashboardPage extends ConsumerStatefulWidget {
   const DashboardPage({super.key});
@@ -121,6 +130,24 @@ class _DashboardPageState extends ConsumerState<DashboardPage> {
                 ),
               ),
               PopupMenuItem(
+                value: _DashboardMenu.fuelPrices,
+                child: ListTile(
+                  dense: true,
+                  leading: const Icon(Icons.local_offer_outlined),
+                  title: const Text('Harga BBM'),
+                  subtitle: const Text('Cek harga terkini'),
+                ),
+              ),
+              PopupMenuItem(
+                value: _DashboardMenu.aboutUs,
+                child: ListTile(
+                  dense: true,
+                  leading: const Icon(Icons.info_outline),
+                  title: const Text('Tentang Kami'),
+                  subtitle: const Text('Info aplikasi'),
+                ),
+              ),
+              PopupMenuItem(
                 value: _DashboardMenu.toggleTheme,
                 child: ListTile(
                   dense: true,
@@ -170,6 +197,19 @@ class _DashboardPageState extends ConsumerState<DashboardPage> {
                             onTap: () =>
                                 Navigator.of(c).pop('/premium/compare'),
                           ),
+                          const Divider(),
+                          ListTile(
+                            leading: const Icon(Icons.price_change_outlined),
+                            title: const Text('Updated Prices'),
+                            onTap: () => Navigator.of(c).pop('/updated-prices'),
+                          ),
+                          ListTile(
+                            leading:
+                                const Icon(Icons.document_scanner_outlined),
+                            title: const Text('OCR Receipt'),
+                            subtitle: const Text('Scan struk BBM (Beta)'),
+                            onTap: () => Navigator.of(c).pop('/receipt-ocr'),
+                          ),
                         ],
                       ),
                     ),
@@ -183,6 +223,14 @@ class _DashboardPageState extends ConsumerState<DashboardPage> {
                 case _DashboardMenu.nearby:
                   if (!mounted) return;
                   context.go('/nearby-stations');
+                  break;
+                case _DashboardMenu.fuelPrices:
+                  if (!mounted) return;
+                  context.go('/fuel-prices');
+                  break;
+                case _DashboardMenu.aboutUs:
+                  if (!mounted) return;
+                  context.go('/about-us');
                   break;
                 case _DashboardMenu.toggleTheme:
                   themeNotifier.toggleLightDark();
@@ -366,6 +414,49 @@ class _DashboardPageState extends ConsumerState<DashboardPage> {
                         ),
                       ),
                     ],
+                  ),
+                  const SizedBox(height: 12),
+                  // Placeholder Iklan
+                  Glass(
+                    child: Container(
+                      height: 120,
+                      padding: const EdgeInsets.all(16),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(
+                            Icons.ads_click_outlined,
+                            size: 32,
+                            color: Theme.of(context)
+                                .colorScheme
+                                .primary
+                                .withValues(alpha: 0.6),
+                          ),
+                          const SizedBox(height: 8),
+                          Text(
+                            'Ruang Iklan',
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w600,
+                              color: Theme.of(context)
+                                  .colorScheme
+                                  .onSurface
+                                  .withValues(alpha: 0.7),
+                            ),
+                          ),
+                          Text(
+                            '300x120 px',
+                            style: TextStyle(
+                              fontSize: 12,
+                              color: Theme.of(context)
+                                  .colorScheme
+                                  .onSurface
+                                  .withValues(alpha: 0.5),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
                   ),
                   const SizedBox(height: 12),
                   const Text('Terbaru',

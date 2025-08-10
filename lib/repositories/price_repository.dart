@@ -20,4 +20,22 @@ class PriceRepository {
     }
     return null;
   }
+
+  Future<List<Map<String, dynamic>>> listAll() async {
+    final res = await _client
+        .from('fuel_prices')
+        .select()
+        .order('brand')
+        .order('fuel_type');
+    return (res as List).cast<Map<String, dynamic>>();
+  }
+
+  Future<List<Map<String, dynamic>>> listByBrand(String brand) async {
+    final res = await _client
+        .from('fuel_prices')
+        .select()
+        .ilike('brand', brand)
+        .order('fuel_type');
+    return (res as List).cast<Map<String, dynamic>>();
+  }
 }

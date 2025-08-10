@@ -18,7 +18,15 @@ import 'pages/edit_record_page.dart';
 import 'pages/manage_premium_page.dart';
 import 'pages/compare_plans_page.dart';
 import 'pages/profile_page.dart';
+import 'pages/personal_info_page.dart';
+import 'pages/change_password_page.dart';
+import 'pages/faq_page.dart';
+import 'pages/about_page.dart';
+import 'pages/delete_account_page.dart';
 import 'pages/nearby_stations_page.dart';
+import 'pages/fuel_prices_page.dart';
+import 'pages/receipt_ocr_page.dart';
+import 'pages/about_us_page.dart';
 import 'providers/theme_provider.dart';
 import 'theme/app_theme.dart';
 import 'pages/stats_page.dart';
@@ -121,8 +129,40 @@ class FuelMeterApp extends ConsumerWidget {
           pageBuilder: (c, s) => _fadeScalePage(const ProfilePage()),
         ),
         GoRoute(
+          path: '/personal-info',
+          pageBuilder: (c, s) => _fadeScalePage(const PersonalInfoPage()),
+        ),
+        GoRoute(
+          path: '/change-password',
+          pageBuilder: (c, s) => _fadeScalePage(const ChangePasswordPage()),
+        ),
+        GoRoute(
+          path: '/faq',
+          pageBuilder: (c, s) => _fadeScalePage(const FaqPage()),
+        ),
+        GoRoute(
+          path: '/about',
+          pageBuilder: (c, s) => _fadeScalePage(const AboutPage()),
+        ),
+        GoRoute(
+          path: '/delete-account',
+          pageBuilder: (c, s) => _fadeScalePage(const DeleteAccountPage()),
+        ),
+        GoRoute(
           path: '/nearby-stations',
           pageBuilder: (c, s) => _fadeScalePage(const NearbyStationsPage()),
+        ),
+        GoRoute(
+          path: '/fuel-prices',
+          pageBuilder: (c, s) => _fadeScalePage(const FuelPricesPage()),
+        ),
+        GoRoute(
+          path: '/receipt-ocr',
+          pageBuilder: (c, s) => _fadeScalePage(const ReceiptOcrPage()),
+        ),
+        GoRoute(
+          path: '/about-us',
+          pageBuilder: (c, s) => _fadeScalePage(const AboutUsPage()),
         ),
         GoRoute(
           path: '/records',

@@ -62,6 +62,15 @@ class RecordDetailPage extends ConsumerWidget {
                         'Total',
                         currency.format(
                             (r['total_cost'] as num?)?.toDouble() ?? 0)),
+                    _kv(
+                        context,
+                        'Biaya/km',
+                        currency.format(
+                          _calculateCostPerKm(
+                            (r['total_cost'] as num?)?.toDouble() ?? 0,
+                            (r['distance_km'] as num?)?.toDouble() ?? 0,
+                          ),
+                        )),
                     _kv(context, 'Jarak (km)',
                         (r['distance_km'] ?? 0).toString()),
                     _kv(context, 'Odometer',
@@ -76,6 +85,11 @@ class RecordDetailPage extends ConsumerWidget {
         },
       ),
     );
+  }
+
+  double _calculateCostPerKm(double totalCost, double distanceKm) {
+    if (distanceKm <= 0) return 0;
+    return totalCost / distanceKm;
   }
 
   Widget _kv(BuildContext context, String k, String v) {
